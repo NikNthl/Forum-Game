@@ -86,7 +86,7 @@ return [
             'port' => env('DB_PORT', '8000'),
             'database' => env('DB_DATABASE', 'forumgame'),
             'username' => env('DB_USERNAME', 'postgres'),
-            'password' => env('DB_PASSWORD', 'fan1'),
+            'password' => env('DB_PASSWORD', ' '),
             'charset' => env('DB_CHARSET', 'utf8'),
             'prefix' => '',
             'prefix_indexes' => true,
