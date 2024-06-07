@@ -12,19 +12,18 @@ class CreateUsersTable extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->id(); // primary key yg otomatis bertambah dan unik untuk setiap user
+            $table->string('name'); //untuk menyimpan username
+            $table->string('email')->unique(); //untuk menyimpan alamat email pengguna, harus unik
+            $table->string('password'); //untuk menyimpan password yang telah di hash
+            $table->rememberToken(); //untuk menyimpan token yang digunakan untuk autentikasi
+            $table->timestamps();//untuk mengatur waktu secara otomatis ketika create dan update setiap kali membuat akun ataupun mengupdate akun
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
-            $table->string('email')->primary();
-            $table->string('token');
-            $table->timestamp('created_at')->nullable();
+            $table->string('email')->primary(); //untuk memastikan email tidak ada duplikasi
+            $table->string('token'); //untuk menyimpan token reset password
+            $table->timestamp('created_at')->nullable();//untuk menandai wkatu kapan token reset password dibuat, nullable berarti menunjukan bahwa kolom dapat memiliki nilai null jika waktu pembuatan token tidak diketahui atau tidak relevan
         });
     }
 
