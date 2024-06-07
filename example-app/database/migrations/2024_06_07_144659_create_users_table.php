@@ -25,6 +25,14 @@ class CreateUsersTable extends Migration
             $table->string('token'); //untuk menyimpan token reset password
             $table->timestamp('created_at')->nullable();//untuk menandai wkatu kapan token reset password dibuat, nullable berarti menunjukan bahwa kolom dapat memiliki nilai null jika waktu pembuatan token tidak diketahui atau tidak relevan
         });
+        Schema::create('sessions', function (Blueprint $table) {
+            $table->string('id')->primary();
+            $table->foreignId('user_id')->nullable()->index();
+            $table->string('ip_address', 45)->nullable();
+            $table->text('user_agent')->nullable();
+            $table->longText('payload');
+            $table->integer('last_activity')->index();
+        });
     }
 
     /**
