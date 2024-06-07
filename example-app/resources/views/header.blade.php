@@ -13,11 +13,11 @@
     </head>
     <body>
         <!-- Page header with logo and tagline-->
-        <header class="py-5 bg-light border-bottom mb-4">
+        <header class="bg-light border-bottom">
             <div class="container">
-                <div class="text-center my-5">
+                <div class="text-left my-5">
                     <h1 class="fw-bolder">Welcome to PIMPAN!</h1>
-                    <p class="lead mb-0">A Bootstrap 5 starter layout for your next blog homepage</p>
+                    <p class="lead mb-0">A forum designed for gamers, featuring discussions on a variety of gaming-related topics.</p>
                 </div>
             </div>
         </header>
