@@ -2,7 +2,6 @@
 <html lang="en">
 @include ('header')
     <body id="page-top"></body>
-        @include('menu')
         @yield('content')
         @include('footer')
         <!-- Bootstrap core JS-->
