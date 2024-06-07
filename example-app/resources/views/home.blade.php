@@ -26,21 +26,21 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="https://i.pinimg.com/736x/5c/c7/bf/5cc7bf9ebcd3f22700f966d24051d800.jpg" width = 700 length = 300  alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <h2 class="card-title h4">Paquita istri Tatsumi?!</h2>
+                                    <p class="card-text">OMGGGG GUA NIKAH AMA HUSBU GAME GUA?! SHOCKING!!</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="https://i.pinimg.com/736x/bd/79/52/bd79529792197c74ad2c8f925b9ec3ee.jpg" width = 700 length = 300 alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <h2 class="card-title h4">Tatsumi FS2 announcement</h2>
+                                    <p class="card-text">BROOO TATSUMI FS2 JUST DROPPED AND I DONT HAVE ANY DIAS LEFT NAURRRRR</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
@@ -48,21 +48,21 @@
                         <div class="col-lg-6">
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="https://i.pinimg.com/564x/d0/fc/c3/d0fcc357f327751c552b362132b529d7.jpg" width = 700 length = 300 alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
+                                    <h2 class="card-title h4">emang bole seperfect ini?!</h2>
+                                    <p class="card-text">katanya di dunia gaada yang sempurna tapi ini ada kok di depan mata</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
                             <!-- Blog post-->
                             <div class="card mb-4">
-                                <a href="#!"><img class="card-img-top" src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                                <a href="#!"><img class="card-img-top" src="https://i.pinimg.com/564x/02/76/d8/0276d821caa8b8964162b0e21dfc30b4.jpg" width = 700 length = 300 alt="..." /></a>
                                 <div class="card-body">
                                     <div class="small text-muted">January 1, 2023</div>
-                                    <h2 class="card-title h4">Post Title</h2>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
+                                    <h2 class="card-title h4">GW NAKSIRR</h2>
+                                    <p class="card-text">gue naksir banget SENAKSIR itu. sangat amat NAKSIR! ini kalo ketauan pemerintah pasti rasa naksir gue dijadiin PEMBANGKIT LISTRIK TENAGA NAKSIR</p>
                                     <a class="btn btn-primary" href="#!">Read more →</a>
                                 </div>
                             </div>
