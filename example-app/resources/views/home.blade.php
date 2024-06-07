@@ -12,7 +12,7 @@
                 <div class="col-lg-8">
                     <!-- Featured blog post-->
                     <div class="card mb-4">
-                        <a href="#!"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg" alt="..." /></a>
+                        <a href="#!"><img src="https://pbs.twimg.com/media/FvVx9smaIAA-oVF.jpg:large" width= 855 length= 350 alt="Tatsumi" /></a>
                         <div class="card-body">
                             <div class="small text-muted">January 1, 2023</div>
                             <h2 class="card-title">Tatsumi kok bisa cakep banget ya?!</h2>
@@ -88,7 +88,7 @@
                         <div class="card-header">Search</div>
                         <div class="card-body">
                             <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Search PIMPAN" aria-label="Search..." aria-describedby="button-search" />
+                                <input class="form-control" type="text" placeholder="Search keywords" aria-label="Search..." aria-describedby="button-search" />
                                 <button class="btn btn-primary" id="button-search" type="button">Search</button>
                             </div>
                         </div>

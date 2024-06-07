@@ -4,7 +4,3 @@ use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [homeController::class, 'index']);
-
-Route::get('/authentication', function() {
-    return view('welcome');
-});
