@@ -13,7 +13,7 @@
     </head>
     <body>
         <!-- Page header with logo and tagline-->
-        <header class="bg-light border-bottom">
+        <header class="py-1 bg-light border-bottom">
             <div class="container">
                 <div class="text-left my-5">
                     <h1 class="fw-bolder">Welcome to PIMPAN!</h1>
