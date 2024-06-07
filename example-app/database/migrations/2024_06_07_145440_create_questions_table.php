@@ -14,6 +14,7 @@ class createquestionstable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id(); # ini id question 
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); #ini yang menghububngkan antara users dan question
+            $table->string('title'); #ini judul question
             $table->text('questions'); #ini untuk menyumpan pertanyaan nya 
             $table->timestamps();#ini waktu pada saat pertanyaannya di buat
         });
