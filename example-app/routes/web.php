@@ -14,3 +14,7 @@ Route::get ('/register', [registerController::class, 'index']);
 Route::get ('/question', function(){
     return view('addQuestion');
 });
+
+Route::get ('/changePassword',function(){
+    return view('changePassword');
+});

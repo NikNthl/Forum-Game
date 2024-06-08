@@ -3870,6 +3870,10 @@ fieldset:disabled .btn {
     width: 100%;
 }
 
+.nav-item .active {
+    color: #fff; 
+}
+
 .tab-content > .tab-pane {
     display: none;
 }
