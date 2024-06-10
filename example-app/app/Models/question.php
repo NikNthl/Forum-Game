@@ -10,6 +10,7 @@ class question extends Model
     protected $table = 'question';
     protected $fillable =[
         'title',
-        'question'    
+        'question',
+        'tags'
     ];
 };
