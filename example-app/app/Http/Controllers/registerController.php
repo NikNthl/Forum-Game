@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use App\Models\User;
 
 class registerController extends Controller{
         public function register(Request $request): RedirectResponse
@@ -27,7 +28,7 @@ class registerController extends Controller{
         $user = new User($validatedData);
         $user->save();
 
-        // Redirect to a success page or wherever needed with a flash message
+        // Redirect to home
         return redirect('/');
     }
 
