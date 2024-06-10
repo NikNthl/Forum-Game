@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class registerController extends Controller{
         public function register(Request $request): RedirectResponse
@@ -28,6 +29,10 @@ class registerController extends Controller{
 
         // Remove confirm_password from validated data
         unset($validatedData['confirm_password']);
+
+
+        // Hash the password
+        $validatedData['password'] = Hash::make($validatedData['password']);
 
         $user = new User($validatedData);
         $user->save();
