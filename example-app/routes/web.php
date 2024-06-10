@@ -17,6 +17,8 @@ Route::get ('/register', function(){
     return view('register');
 });
 
+Route::post ('/register', [registerController::class, 'register']);
+
 Route::get ('/question', function(){
     return view('addQuestion');
 });
@@ -24,3 +26,4 @@ Route::get ('/question', function(){
 Route::get ('/changePassword',function(){
     return view('changePassword');
 });
+

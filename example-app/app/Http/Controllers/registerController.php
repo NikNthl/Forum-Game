@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\User;
@@ -24,6 +24,10 @@ class registerController extends Controller{
             ],
             'confirm_password' => 'required|same:password',
         ]);
+
+
+        // Remove confirm_password from validated data
+        unset($validatedData['confirm_password']);
 
         $user = new User($validatedData);
         $user->save();
