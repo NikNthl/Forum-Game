@@ -5,11 +5,17 @@ use App\Http\Controllers\loginController;
 use App\Http\Controllers\registerController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [homeController::class, 'index']);
+Route::get ('/', function(){
+    return view('home');
+});
 
-Route::get ('/login', [loginController::class, 'index']);
+Route::get ('/login', function(){
+    return view('login');
+});
 
-Route::get ('/register', [registerController::class, 'index']);
+Route::get ('/register', function(){
+    return view('register');
+});
 
 Route::get ('/question', function(){
     return view('addQuestion');

@@ -26,17 +26,13 @@
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Create Account</h5>
             <form>
-            <div class="form-floating mb-3">
-                <input type="username" class="form-control" id="floatingInput" placeholder="Name">
-                <label for="floatingInput">Name</label>
-            </div>
-              <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="floatingInput" placeholder="Email">
-                <label for="floatingInput">Email</label>
-              </div>
               <div class="form-floating mb-3">
                 <input type="username" class="form-control" id="floatingInput" placeholder="Username">
                 <label for="floatingInput">Username</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInput" placeholder="Email">
+                <label for="floatingInput">Email</label>
               </div>
               <div class="form-floating mb-3">
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
