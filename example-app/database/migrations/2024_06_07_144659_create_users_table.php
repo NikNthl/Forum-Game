@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id(); // primary key yg otomatis bertambah dan unik untuk setiap user
-            $table->string('name'); //untuk menyimpan username
+            $table->string('username'); //untuk menyimpan username
             $table->string('email')->unique(); //untuk menyimpan alamat email pengguna, harus unik
             $table->string('password'); //untuk menyimpan password yang telah di hash
             $table->rememberToken(); //untuk menyimpan token yang digunakan untuk autentikasi
