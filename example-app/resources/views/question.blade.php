@@ -25,21 +25,22 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Add Question</h5>
-            <form>
+            <form method="POST" action="/question">
+            {{ csrf_field() }}
                 <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="questionTitle" placeholder="Title" required>
+                <input type="text" class="form-control" id="questionTitle" name="title" placeholder="Title" required>
                 <label for="floatingInput">Title</label>
                  </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" id="questionDetails" placeholder="Describe your question in detail" style="height: 150px;" required></textarea>
+                    <textarea class="form-control" id="questionDetails" name="question" placeholder="Describe your question in detail" style="height: 150px;" required></textarea>
                     <label for="questionDetails"><small class="form-text text-muted">Enter your question details here.</small></label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="questionTags" placeholder="Tags" required>
+                    <input type="text" class="form-control" id="questionTags" name="tags" placeholder="Tags" required>
                     <label for="questionTags">Tags</label>
                 </div>
                 <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Submit Question</button>
+                <input type = "submit" class="btn btn-primary btn-login text-uppercase fw-bold" value = "Submit Question">
               </div>
             </form>
           </div>

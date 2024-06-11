@@ -3,6 +3,7 @@
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\questionController;
 
 Route::get ('/home', function(){
     return view('home');
@@ -19,8 +20,10 @@ Route::get ('/register', function(){
 Route::post ('/register', [registerController::class, 'register']);
 
 Route::get ('/question', function(){
-    return view('addQuestion');
+    return view('question');
 });
+
+Route::post ('/question', [questionController::class, 'question']);
 
 Route::get ('/changePassword',function(){
     return view('changePassword');

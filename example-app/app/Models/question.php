@@ -7,10 +7,24 @@ use Illuminate\Database\Eloquent\Model;
 class question extends Model
 {
     use HasFactory;
-    protected $table = 'question';
+    protected $table = 'questions';
     protected $fillable =[
+        'user_id',
         'title',
         'question',
-        'tags'
+        'tags',
+        
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($question) {
+            // Saat membuat pertanyaan baru, pastikan user_id diisi
+            if (auth()->check()) {
+                $question->user_id = auth()->id();
+            }
+        });
+    }        
 };
