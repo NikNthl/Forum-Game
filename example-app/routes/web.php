@@ -23,7 +23,7 @@ Route::get ('/question', function(){
     return view('question');
 });
 
-Route::post ('/question', [questionController::class, 'question']);
+Route::post ('/question', [questionController::class, 'index']);
 
 Route::get ('/changePassword',function(){
     return view('changePassword');

@@ -7,7 +7,12 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\question;
 
 class questionController extends Controller{
-    public function question(Request $request): RedirectResponse
+    public function index(){
+        $questions = Question::all();
+        return view('home', compact('questions'));
+    }
+
+    public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:200',
@@ -35,7 +40,7 @@ class questionController extends Controller{
 
         $question->delete();
 
-        return redirect()->route('/')->with('success', 'question deleted');
+        return redirect()->route('/home')->with('success', 'question deleted');
     }
     public function editQuestion(Request $request, $id){
 
