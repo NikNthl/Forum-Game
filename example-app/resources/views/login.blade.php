@@ -27,7 +27,7 @@
             @if(session('error'))
             </div>
             @endif
-            <form method="POST" action="/login">
+            <form method="POST" action="/">
                @csrf
               <div class="form-floating mb-3">
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Your Name">

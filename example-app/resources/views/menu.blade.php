@@ -39,8 +39,6 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="profileDropdown">
                             <a class="dropdown-item" href="/account">Account</a>
-                            <a class="dropdown-item" href="/login">Login</a>
-                            <a class="dropdown-item" href="/register">Register</a>
                             <a class="dropdown-item" href="/changePassword">Change Password</a>
                             <a class="dropdown-item" href="/logout">Log Out</a>
                         </div>

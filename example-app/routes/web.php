@@ -4,11 +4,11 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
-Route::get ('/', function(){
+Route::get ('/home', function(){
     return view('home');
 });
 
-Route::get ('/login', function(){
+Route::get ('/', function(){
     return view('login');
 });
 
@@ -27,7 +27,7 @@ Route::get ('/changePassword',function(){
 });
 
 // Route untuk proses submit login (gunakan POST untuk keamanan)
-Route::post('/login', [AuthController::class, 'login']);
+Route::post('/', [AuthController::class, 'login']);
 
 // Route untuk proses logout
 Route::get('/logout', [AuthController::class, 'logout']);

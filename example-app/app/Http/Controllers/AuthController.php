@@ -21,7 +21,7 @@ class AuthController extends Controller
             request()->only(['username','password']),
             request()->filled('remember')
         )) {
-            return redirect('/');
+            return redirect('/home');
         }
 
         return redirect()->back()->with('error', 'Invalid credentials !');
