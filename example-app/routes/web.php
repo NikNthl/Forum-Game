@@ -27,7 +27,7 @@ Route::get ('/changePassword',function(){
 });
 
 // Route untuk proses submit login (gunakan POST untuk keamanan)
-Route::post('/login', [AuthController::class, 'Login']);
+Route::post('/login', [AuthController::class, 'login']);
 
 // Route untuk proses logout
 Route::get('/logout', [AuthController::class, 'logout']);

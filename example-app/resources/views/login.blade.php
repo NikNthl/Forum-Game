@@ -27,7 +27,7 @@
             @if(session('error'))
             </div>
             @endif
-            <form method="POST" action="/">
+            <form method="POST" action="/login">
                @csrf
               <div class="form-floating mb-3">
                 <input type="text" name="username" class="form-control" id="floatingInput" placeholder="Your Name">
@@ -36,9 +36,12 @@
                 <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                 <label for="floatingPassword">Password</label>
               </div>
-
+              <div>
+              <label for="remember">Remember Me</label>
+              <input type="checkbox" id="remember" name="remember">
+              </div>
               <div class="d-grid">
-                <button class="btn btn-primary btn-login text-uppercase fw-bold" type="submit">Sign in</button>
+                <input type = submit  class="btn btn-primary btn-login text-uppercase fw-bold" value = "Sign In">
               </div>
             </form>
           </div>
