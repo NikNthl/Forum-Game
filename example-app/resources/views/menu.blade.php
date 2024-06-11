@@ -24,7 +24,7 @@
     <!-- Responsive navbar-->
     <nav class="navbar navbar-expand-lg navbar-pink bg-pink">
         <div class="container">
-            <a class="navbar-brand" href="#!">PIMPAN</a>
+            <a class="navbar-brand" href="/home">PIMPAN</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -44,7 +44,7 @@
                         </div>
                     </li>
                     <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link" href="/home">Home</a>
                     </li>
                 </ul>
             </div>
