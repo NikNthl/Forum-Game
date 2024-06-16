@@ -2,10 +2,11 @@
 
 use App\Http\Controllers\registerController;
 use App\Http\Controllers\AuthController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\questionController;
+use App\Http\Controllers\homeController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/home', [questionController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index']);
 
 Route::get ('/', function(){
     return view('login');
