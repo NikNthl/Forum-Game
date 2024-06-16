@@ -13,7 +13,6 @@ class question extends Model
         'title',
         'question',
         'tags',
-        
     ];
 
     protected static function boot()
