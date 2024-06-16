@@ -6,7 +6,7 @@ use App\Http\Controllers\questionController;
 use App\Http\Controllers\homeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/home', [HomeController::class, 'index']);
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get ('/', function(){
     return view('login');
@@ -23,6 +23,11 @@ Route::get ('/question', function(){
 });
 
 Route::post ('/question', [questionController::class, 'store']);
+
+Route::put('/questions/{id}', [QuestionController::class, 'editQuestion'])->name('questions.edit');
+
+Route::delete('/questions/{id}', [QuestionController::class, 'deleteQuestion'])->name('questions.delete');
+
 
 Route::get ('/changePassword',function(){
     return view('changePassword');

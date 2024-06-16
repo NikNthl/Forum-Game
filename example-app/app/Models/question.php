@@ -20,10 +20,10 @@ class question extends Model
         parent::boot();
 
         static::creating(function ($question) {
-            // Saat membuat pertanyaan baru, pastikan user_id diisi
             if (auth()->check()) {
                 $question->user_id = auth()->id();
             }
         });
-    }        
+    }
+
 };

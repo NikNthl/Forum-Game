@@ -7,11 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\question;
 
 class questionController extends Controller{
-    public function index(){
-        $questions = Question::all();
-        return view('home', compact('questions'));
-    }
-
+    
     public function store(Request $request): RedirectResponse
     {
         $validatedData = $request->validate([
@@ -31,17 +27,19 @@ class questionController extends Controller{
         return redirect('/home');
     }
 
-    public function deleteQuestion($id){
-        $question = question::findOrFail($id);
+    public function deleteQuestion($id)
+{
+    $question = Question::findOrFail($id);
 
-        if ($question->user_id != auth()->id()){
-            return redirect()->route('/')->with('error', 'you cannot delete other users question');
-        }
-
-        $question->delete();
-
-        return redirect()->route('/home')->with('success', 'question deleted');
+    if ($question->user_id != auth()->id()) {
+        return redirect()->route('home')->with('error', 'You cannot delete other users questions');
     }
+
+    $question->delete();
+
+    return redirect()->route('home')->with('success', 'question deleted');
+}
+
     public function editQuestion(Request $request, $id){
 
         $validatedData = $request->validate([
@@ -53,7 +51,7 @@ class questionController extends Controller{
         $question = question::findOrFail($id);
 
         if ($question->user_id != auth()->id()){
-            return redirect()->route('/home')->with('error', 'you cannot edit other users question');
+            return redirect()->route('home')->with('error', 'you cannot edit other users question');
         }
 
         $question->update([
@@ -62,6 +60,6 @@ class questionController extends Controller{
             'tags' => $validatedData['tags'],
         ]);
     
-        return redirect()->route('/home')->with('success', 'question editted');
+        return redirect()->route('home')->with('success', 'question editted');
     }
 }
