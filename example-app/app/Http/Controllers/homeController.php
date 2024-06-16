@@ -8,7 +8,7 @@ class homeController extends Controller
 {
     public function index()
     {
-        $questions = Question::all();
+        $questions = question::all();
         return view('home', compact('questions'));
     }
 }
