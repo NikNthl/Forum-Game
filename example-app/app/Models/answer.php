@@ -6,11 +6,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-
-class answer extends Model
+class Answer extends Model
 {
     use HasFactory;
 
     protected $table = 'answers';
-    protected $fillable = ['answers'];
-}
+
+    protected $fillable = [
+        'question_id',
+        'user_id',
+        'answers',
+    ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($answer) {
+            if (auth()->check()) {
+                $answer->user_id = auth()->id();
+            }
+        });
+    }
+};
