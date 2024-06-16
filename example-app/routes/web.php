@@ -5,9 +5,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\questionController;
 
-Route::get ('/home', function(){
-    return view('home');
-});
+Route::get('/home', [questionController::class, 'index']);
 
 Route::get ('/', function(){
     return view('login');
@@ -23,7 +21,7 @@ Route::get ('/question', function(){
     return view('question');
 });
 
-Route::post ('/question', [questionController::class, 'index']);
+Route::post ('/question', [questionController::class, 'store']);
 
 Route::get ('/changePassword',function(){
     return view('changePassword');
