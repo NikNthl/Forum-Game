@@ -11,7 +11,7 @@
                     @foreach($questions as $question)
                         <div class="card mb-4">
                             <div class="card-header"><div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{$question->id}}" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="btn btn-secondary dropdown-toggle float-right" type="button" id="dropdownMenuButton{{$question->id}}" data-bs-toggle="dropdown" aria-expanded="false">
                                 ...
                             </button>
                     <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton{{$question->id}}">
@@ -65,15 +65,7 @@
                 @endif
             </div>
             <div class="col-lg-4">
-                <div class="card mb-4">
-                    <div class="card-header">Search</div>
-                    <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Search keywords" aria-label="Search..." aria-describedby="button-search">
-                            <button class="btn btn-primary" type="button" id="button-search">Search</button>
-                        </div>
-                    </div>
-                </div>
+                @include('search')
                 <div class="card mb-4">
                     <div class="card-header">Hot Topics</div>
                     <div class="card-body">

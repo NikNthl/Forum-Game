@@ -4,6 +4,7 @@ use App\Http\Controllers\registerController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\questionController;
 use App\Http\Controllers\homeController;
+use App\Http\Controllers\searchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -38,3 +39,7 @@ Route::post('/', [AuthController::class, 'login']);
 
 // Route untuk proses logout
 Route::get('/logout', [AuthController::class, 'logout']);
+
+// Route untuk search
+Route::get('/home', [SearchController::class, 'index'])->name('home');
+
