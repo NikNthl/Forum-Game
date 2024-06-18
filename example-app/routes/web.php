@@ -25,9 +25,9 @@ Route::get ('/question', function(){
 
 Route::post ('/question', [questionController::class, 'store']);
 
-Route::put('/questions/{id}', [QuestionController::class, 'editQuestion'])->name('questions.edit');
+Route::put('/question/{id}', [questionController::class, 'editQuestion'])->name('questions.edit');
 
-Route::delete('/questions/{id}', [QuestionController::class, 'deleteQuestion'])->name('questions.delete');
+Route::delete('/question/{id}', [questionController::class, 'deleteQuestion'])->name('questions.delete');
 
 
 Route::get ('/changePassword',function(){
