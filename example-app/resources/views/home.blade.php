@@ -66,27 +66,7 @@
             </div>
             <div class="col-lg-4">
                 @include('search')
-                <div class="card mb-4">
-                    <div class="card-header">Hot Topics</div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">MLBB</a></li>
-                                    <li><a href="#!">VALORANT</a></li>
-                                    <li><a href="#!">PUBG</a></li>
-                                </ul>
-                            </div>
-                            <div class="col-sm-6">
-                                <ul class="list-unstyled mb-0">
-                                    <li><a href="#!">Eternal Return</a></li>
-                                    <li><a href="#!">Ensemble Stars!!</a></li>
-                                    <li><a href="#!">Wuthering Waves</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </div>
         </div>
     </div>

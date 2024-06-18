@@ -43,3 +43,12 @@ Route::get('/logout', [AuthController::class, 'logout']);
 // Route untuk search
 Route::get('/home', [SearchController::class, 'index'])->name('home');
 
+// Route untuk account
+Route::get('/account', function(){
+    return view('account');
+});
+
+// Route untuk account
+Route::get('/account/edit', function(){
+    return view('updateProfile');
+});

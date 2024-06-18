@@ -13,7 +13,7 @@
     </head>
     <body>
          <!-- Footer-->
-         <footer class="py-5 bg-pink">
+         <footer class="py-5 bg-pink style: width-100%;">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; PIMPAN 2024</p></div>
         </footer>
     </body>
