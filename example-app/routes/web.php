@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\questionController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\searchController;
+use App\Http\Controllers\PasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -33,6 +34,12 @@ Route::delete('/question/{id}', [questionController::class, 'deleteQuestion'])->
 Route::get ('/changePassword',function(){
     return view('changePassword');
 });
+
+// Route to display the change password form
+Route::get('/changePassword', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
+
+// Route to handle the password change request
+Route::post('/changePassword', [PasswordController::class, 'changePassword'])->name('password.update');
 
 // Route untuk proses submit login (gunakan POST untuk keamanan)
 Route::post('/', [AuthController::class, 'login']);
