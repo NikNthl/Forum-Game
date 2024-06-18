@@ -55,6 +55,14 @@
                             <div class="card-body">
                                 <p class="card-text">{{ $question->question }}</p>
                                 <div class="text-muted mb-1">Tags: {{$question->tags}}</div>
+                                <form method="POST" action="{{ route('questions.like', $question->id) }}" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-success btn-sm">Like ({{ $question->likes->count() }})</button>
+                                </form>
+                                <form method="POST" action="{{ route('questions.dislike', $question->id) }}" class="d-inline">
+                                    @csrf
+                                    <button type="submit" class="btn btn-outline-danger btn-sm">Dislike ({{ $question->dislikes->count() }})</button>
+                                </form>
                             </div>
                         </div>
                     @endforeach

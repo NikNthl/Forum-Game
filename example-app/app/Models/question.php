@@ -15,6 +15,16 @@ class question extends Model
         'tags',
     ];
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class)->where('is_like', true);
+    }
+
+    public function dislikes()
+    {
+        return $this->hasMany(Like::class)->where('is_like', false);
+    }
+
     protected static function boot()
     {
         parent::boot();

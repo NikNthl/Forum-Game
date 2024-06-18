@@ -59,3 +59,7 @@ Route::get('/account', function(){
 Route::get('/account/edit', function(){
     return view('updateProfile');
 });
+
+Route::post('/questions/{id}/like', [questionController::class, 'like'])->name('questions.like');
+
+Route::post('/questions/{id}/dislike', [questionController::class, 'dislike'])->name('questions.dislike');
