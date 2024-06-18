@@ -5,6 +5,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\question;
+use App\Models\Like;
 
 class questionController extends Controller{
     
@@ -61,5 +62,27 @@ class questionController extends Controller{
         ]);
     
         return redirect()->route('home')->with('success', 'question editted');
+        }
+        
+    public function like(Request $request, $id)
+    {
+        $question = Question::findOrFail($id);
+        $like = Like::updateOrCreate(
+            ['user_id' => auth()->id(), 'question_id' => $id],
+            ['is_like' => true]
+        );
+
+        return redirect()->route('home')->with('success', 'Question liked');
+    }
+
+    public function dislike(Request $request, $id)
+    {
+        $question = Question::findOrFail($id);
+        $like = Like::updateOrCreate(
+            ['user_id' => auth()->id(), 'question_id' => $id],
+            ['is_like' => false]
+        );
+
+        return redirect()->route('home')->with('success', 'Question disliked');
     }
 }
