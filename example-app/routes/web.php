@@ -6,6 +6,7 @@ use App\Http\Controllers\questionController;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -63,3 +64,7 @@ Route::get('/account/edit', function(){
 Route::post('/questions/{id}/like', [questionController::class, 'like'])->name('questions.like');
 
 Route::post('/questions/{id}/dislike', [questionController::class, 'dislike'])->name('questions.dislike');
+
+Route::post('/questions/{id}/like', [LikeController::class, 'like'])->name('questions.like');
+
+Route::post('/questions/{id}/dislike', [LikeController::class, 'dislike'])->name('questions.dislike');
