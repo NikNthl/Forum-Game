@@ -9,37 +9,41 @@ use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LikeController;
 use Illuminate\Support\Facades\Route;
 
+// Route untuk halaman home
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
+// Route halaman login
 Route::get ('/', function(){
     return view('login');
 });
 
+// Route halaman register
 Route::get ('/register', function(){
     return view('register');
 });
 
+// Route simpan data register
 Route::post ('/register', [registerController::class, 'register']);
 
+
+// Route ke halaman add question
 Route::get ('/question', function(){
     return view('question');
 });
 
+// Route simpan data question
 Route::post ('/question', [questionController::class, 'store']);
 
+// Route mengedit pertanyaan 
 Route::put('/question/{id}', [questionController::class, 'editQuestion'])->name('questions.edit');
 
+// Route hapus pertanyaan
 Route::delete('/question/{id}', [questionController::class, 'deleteQuestion'])->name('questions.delete');
 
-
-Route::get ('/changePassword',function(){
-    return view('changePassword');
-});
-
-// Route to display the change password form
+// Route halaman change password
 Route::get('/changePassword', [PasswordController::class, 'showChangePasswordForm'])->name('password.change');
 
-// Route to handle the password change request
+// Route proses ganti password
 Route::post('/changePassword', [PasswordController::class, 'changePassword'])->name('password.update');
 
 // Route untuk proses submit login (gunakan POST untuk keamanan)
@@ -60,10 +64,6 @@ Route::get('/account', function(){
 Route::get('/account/edit', function(){
     return view('updateProfile');
 });
-
-Route::post('/questions/{id}/like', [questionController::class, 'like'])->name('questions.like');
-
-Route::post('/questions/{id}/dislike', [questionController::class, 'dislike'])->name('questions.dislike');
 
 Route::post('/questions/{id}/like', [LikeController::class, 'like'])->name('questions.like');
 
