@@ -16,7 +16,8 @@ class createquestionstable extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); #ini yang menghububngkan antara users dan question
             $table->string('title'); #ini judul question
             $table->text('question'); #ini untuk menyumpan pertanyaan nya 
-            $table->string('tags');
+            $table->string('image')->nullable(); # untuk menyimpan image
+            $table->string('tags')->nullable();
             $table->timestamps();#ini waktu pada saat pertanyaannya di buat
         });
 

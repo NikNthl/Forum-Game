@@ -1,66 +1,92 @@
-<?php
-
+<?php 
 namespace App\Http\Controllers;
+
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
-use App\Models\question;
-use App\Models\Like;
+use App\Models\Question;
+use Illuminate\Support\Facades\Storage;
 
-class questionController extends Controller{
-    
+class QuestionController extends Controller
+{
     public function store(Request $request): RedirectResponse
     {
+        // Validate incoming request data
         $validatedData = $request->validate([
             'title' => 'required|string|max:200',
             'question' => 'required|string|max:2000',
-            'tags' =>'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,gif,svg|max:2048',
+            'tags' => 'nullable|string|max:255',
         ]);
-
-       // Tambahkan user_id ke data yang divalidasi
+    
+        // Handle image upload if provided
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public', $filename, 'public'); 
+            $validatedData['image'] = $filename;
+        } else {
+            $validatedData['image'] = null;
+        }
+    
+        // Tambahkan user_id ke data yang divalidasi
         $validatedData['user_id'] = auth()->id();
-
+    
         // Simpan pertanyaan ke dalam database
-        $question = new question($validatedData);
+        $question = new Question($validatedData); 
         $question->save();
-
+        
         // Redirect ke halaman utama
         return redirect('/home');
     }
 
-    public function deleteQuestion($id)
-{
-    $question = Question::findOrFail($id);
+    public function deleteQuestion($id): RedirectResponse
+    {
+        $question = Question::findOrFail($id);
 
-    if ($question->user_id != auth()->id()) {
-        return redirect()->route('home')->with('error', 'You cannot delete other users questions');
+        if ($question->user_id != auth()->id()) {
+            return redirect()->route('home')->with('error', 'You cannot delete other users\' questions');
+        }
+
+        // Optionally delete the image file if it exists
+        if ($question->image) {
+            Storage::disk('public')->delete($question->image);
+        }
+
+        $question->delete();
+
+        return redirect()->route('home')->with('success', 'Question deleted');
     }
 
-    $question->delete();
-
-    return redirect()->route('home')->with('success', 'question deleted');
-}
-
-    public function editQuestion(Request $request, $id){
-
+    public function editQuestion(Request $request, $id): RedirectResponse
+    {
         $validatedData = $request->validate([
             'title' => 'required|string|max:200',
             'question' => 'required|string|max:2000',
-            'tags' =>'nullable|string',
+            'image' => 'image|mimes:jpeg,png,gif,svg|max:2048',
+            'tags' => 'nullable|string',
         ]);
 
-        $question = question::findOrFail($id);
+        $question = Question::findOrFail($id);
 
-        if ($question->user_id != auth()->id()){
-            return redirect()->route('home')->with('error', 'you cannot edit other users question');
+        if ($question->user_id != auth()->id()) {
+            return redirect()->route('home')->with('error', 'You cannot edit other users\' questions');
         }
 
-        $question->update([
-            'title' => $validatedData['title'],
-            'question' => $validatedData['question'],
-            'tags' => $validatedData['tags'],
-        ]);
-    
-        return redirect()->route('home')->with('success', 'question editted');
+        // Handle image upload if provided
+        if ($request->hasFile('image')) {
+            // Optionally delete the old image if it exists
+            if ($question->image) {
+                Storage::disk('public')->delete($question->image);
+            }
+            $validatedData['image'] = $request->file('image')->store('images', 'public');
+        } else {
+            $validatedData['image'] = $question->image;
         }
+
+        $question->update($validatedData);
+
+        return redirect()->route('home')->with('success', 'Question edited');
+    }
 }
+

@@ -36,7 +36,10 @@
                     <label for="questionDetails"><small class="form-text text-muted">Enter your question details here.</small></label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="questionTags" name="tags" placeholder="Tags" required>
+                    <input type="file" class="form-control" id="questionImage" name="image" placeholder="Image">
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="questionTags" name="tags" placeholder="Tags">
                     <label for="questionTags">Tags</label>
                 </div>
                 <div class="d-grid">

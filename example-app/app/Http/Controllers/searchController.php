@@ -11,7 +11,8 @@ class SearchController extends Controller
     {
         $questions = Question::when($request->has('search'), function ($query) use ($request) {
             $query->where('title', 'ilike', '%' . $request->get('search') . '%')
-                  ->orWhere('question', 'ilike', '%' . $request->get('search') . '%');
+                  ->orWhere('question', 'ilike', '%' . $request->get('search') . '%')
+                  ->orWhere('tags', 'ilike', '%' . $request->get('search') . '%');
         })->orderBy('created_at', 'DESC')->paginate(10);
 
         return view('/home', [

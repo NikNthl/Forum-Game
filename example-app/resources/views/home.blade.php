@@ -18,25 +18,29 @@
                                         </button>
                                         <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton{{$question->id}}">
                                             <li>
-                                                <form method="POST" action="{{ route('questions.edit', ['id' => $question->id]) }}">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" id="questionTitle" name="title" placeholder="Title" required value="{{ $question->title }}">
-                                                        <label for="floatingInput">Title</label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <textarea class="form-control" id="questionDetails" name="question" placeholder="Describe your question in detail" style="height: 150px;" required>{{ $question->question }}</textarea>
-                                                        <label for="questionDetails"><small class="form-text text-muted">Enter your question details here.</small></label>
-                                                    </div>
-                                                    <div class="form-floating mb-3">
-                                                        <input type="text" class="form-control" id="questionTags" name="tags" placeholder="Tags" required value="{{ $question->tags }}">
-                                                        <label for="questionTags">Tags</label>
-                                                    </div>
-                                                    <div class="d-grid">
-                                                        <input type="submit" class="btn btn-outline-primary btn-sm" value="Update">
-                                                    </div>
-                                                </form>
+                                            <form method="POST" action="{{ route('questions.edit', ['id' => $question->id]) }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="questionTitle" name="title" placeholder="Title" required value="{{ $question->title }}">
+                                                <label for="floatingInput">Title</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <textarea class="form-control" id="questionDetails" name="question" placeholder="Describe your question in detail" style="height: 150px;" required>{{ $question->question }}</textarea>
+                                                <label for="questionDetails"><small class="form-text text-muted">Enter your question details here.</small></label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="questionTags" name="tags" placeholder="Tags" value="{{ $question->tags }}">
+                                                <label for="questionTags">Tags</label>
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                <input type="file" class="form-control" id="questionImage" name="image" placeholder="Image">
+                                                <label for="questionImage">Image</label>
+                                            </div>
+                                            <div class="d-grid">
+                                                <input type="submit" class="btn btn-outline-primary btn-sm" value="Update">
+                                            </div>
+                                            </form>
                                             </li>
                                             <li>
                                                 <form action="{{ route('questions.delete', $question->id) }}" method="POST">

@@ -12,6 +12,7 @@ class question extends Model
         'user_id',
         'title',
         'question',
+        'image',
         'tags',
     ];
 
