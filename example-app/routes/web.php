@@ -7,6 +7,7 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\searchController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman home
@@ -68,3 +69,8 @@ Route::get('/account/edit', function(){
 Route::post('/questions/{id}/like', [LikeController::class, 'like'])->name('questions.like');
 
 Route::post('/questions/{id}/dislike', [LikeController::class, 'dislike'])->name('questions.dislike');
+
+// Routes untuk answers
+Route::post('/answers', [AnswerController::class, 'store'])->name('answers.store');
+Route::put('/answers/{id}', [AnswerController::class, 'editAnswer'])->name('answers.edit');
+Route::delete('/answers/{id}', [AnswerController::class, 'deleteAnswer'])->name('answers.delete');
