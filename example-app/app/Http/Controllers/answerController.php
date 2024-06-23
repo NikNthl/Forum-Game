@@ -1,57 +1,59 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Routing\Controller;
+
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\answer;
 
-class answerController extends Controller{
-    
+class answerController extends Controller
+{
     public function store(Request $request): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'answers' => 'required|string|max:2000',
+            'question_id' => 'required|integer|exists:questions,id', // Add validation for question_id
+        ]);
+
+        $validatedData['user_id'] = auth()->id();
+
+        // Create and save the answer
+        $answer = new answer($validatedData);
+        $answer->save();
+
+        // Redirect to the home page
+        return redirect('/home');
+    }
+
+    public function deleteanswer($id)
+    {
+        $answer = answer::findOrFail($id);
+
+        if ($answer->user_id != auth()->id()) {
+            return redirect()->route('/')->with('error', 'You cannot delete other users\' answers');
+        }
+
+        $answer->delete();
+
+        return redirect()->route('/home')->with('success', 'answer deleted');
+    }
+
+    public function editanswer(Request $request, $id)
     {
         $validatedData = $request->validate([
             'answers' => 'required|string|max:2000',
         ]);
 
-       // Tambahkan user_id ke data yang divalidasi
-        $validatedData['user_id'] = auth()->id();
+        $answer = answer::findOrFail($id);
 
-        // Simpan jawaban ke dalam database
-        $answers = new answer($validatedData);
-        $answers->save();
-
-        // Redirect ke halaman utama
-        return redirect('/home');
-    }
-
-    public function deleteAnswer($id){
-        $answers = answer::findOrFail($id);
-
-        if ($answers->user_id != auth()->id()){
-            return redirect()->route('/')->with('error', 'you cannot delete other users answer');
+        if ($answer->user_id != auth()->id()) {
+            return redirect()->route('/home')->with('error', 'You cannot edit other users\' answers');
         }
 
-        $answers->delete();
-
-        return redirect()->route('/home')->with('success', 'answer deleted');
-    }
-    public function editAnswer(Request $request, $id){
-
-        $validatedData = $request->validate([
-            'answers' => 'required|string|max:2000',
-        ]);
-
-        $answers = answer::findOrFail($id);
-
-        if ($answers->user_id != auth()->id()){
-            return redirect()->route('/home')->with('error', 'you cannot edit other users answer');
-        }
-
-        $answers->update([
+        $answer->update([
             'answers' => $validatedData['answers'],
         ]);
-    
-        return redirect()->route('/home')->with('success', 'answer editted');
+
+        return redirect()->route('/home')->with('success', 'answer edited');
     }
 }

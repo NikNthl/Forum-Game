@@ -6,10 +6,12 @@ use App\Models\question;
 
 class homeController extends Controller
 {
-    public function index()
-    {
-        $questions = question::all();
-        return view('home', compact('questions'));
-    }
+public function index()
+{
+    // Fetch questions with their related answers
+    $questions = Question::with('answers.user')->get();
+
+    return view('home', compact('questions'));
+}
 }
 
