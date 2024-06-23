@@ -22,7 +22,7 @@ class answerController extends Controller
         $answer->save();
 
         // Redirect to the home page
-        return redirect('/home');
+        return redirect('home');
     }
 
     public function deleteanswer($id)
@@ -35,7 +35,7 @@ class answerController extends Controller
 
         $answer->delete();
 
-        return redirect()->route('/home')->with('success', 'answer deleted');
+        return redirect()->route('home')->with('success', 'answer deleted');
     }
 
     public function editanswer(Request $request, $id)
@@ -47,13 +47,13 @@ class answerController extends Controller
         $answer = answer::findOrFail($id);
 
         if ($answer->user_id != auth()->id()) {
-            return redirect()->route('/home')->with('error', 'You cannot edit other users\' answers');
+            return redirect()->route('home')->with('error', 'You cannot edit other users\' answers');
         }
 
         $answer->update([
             'answers' => $validatedData['answers'],
         ]);
 
-        return redirect()->route('/home')->with('success', 'answer edited');
+        return redirect()->route('home')->with('success', 'answer edited');
     }
 }
