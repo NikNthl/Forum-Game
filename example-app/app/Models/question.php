@@ -31,6 +31,11 @@ class question extends Model
         return $this->hasMany(Like::class)->where('is_like', false);
     }
 
+    public function answers()
+    {
+        return $this->hasMany(Answer::class);
+    }
+    
     protected static function boot()
     {
         parent::boot();
