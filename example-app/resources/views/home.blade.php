@@ -12,22 +12,22 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 @if(auth()->user() && $question->user_id == auth()->user()->id)
-                                    <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle float-right" type="button" id="dropdownMenuButton{{$question->id}}" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="dropdown float-end">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{$question->id}}" data-bs-toggle="dropdown" aria-expanded="false">
                                             ...
                                         </button>
-                                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton{{$question->id}}">
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{$question->id}}">
                                             <li>
                                                 <form method="POST" action="{{ route('questions.edit', ['id' => $question->id]) }}" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="questionTitle" name="title" placeholder="Title" required value="{{ $question->title }}">
-                                                        <label for="floatingInput">Title</label>
+                                                        <label for="questionTitle">Title</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <textarea class="form-control" id="questionDetails" name="question" placeholder="Describe your question in detail" style="height: 150px;" required>{{ $question->question }}</textarea>
-                                                        <label for="questionDetails"><small class="form-text text-muted">Enter your question details here.</small></label>
+                                                        <label for="questionDetails">Question Details</label>
                                                     </div>
                                                     <div class="form-floating mb-3">
                                                         <input type="text" class="form-control" id="questionTags" name="tags" placeholder="Tags" value="{{ $question->tags }}">
@@ -38,7 +38,7 @@
                                                         <label for="questionImage">Image</label>
                                                     </div>
                                                     <div class="d-grid">
-                                                        <input type="submit" class="btn btn-outline-primary btn-sm" value="Update">
+                                                        <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
                                                     </div>
                                                 </form>
                                             </li>
@@ -59,7 +59,7 @@
                                 <p class="card-text">{{ $question->question }}</p>
                                 @if($question->image)
                                     <div class="mb-3 text-center">
-                                        <img src="{{ asset('storage/' . $question->image) }}" alt="{{ $question->title }}" class="img-fluid rounded" style="max-width: 100%; height: auto;">
+                                        <img src="{{ asset('storage/public/' . $question->image) }}" alt="{{ $question->title }}" class="img-fluid rounded" style="max-width: 100%; height: auto;">
                                     </div>
                                 @endif
                                 <div class="text-muted mb-1">Tags: {{ $question->tags }}</div>
@@ -72,7 +72,6 @@
                                     <button type="submit" class="btn btn-outline-danger btn-sm">Downvote ({{ $question->dislikes->count() }})</button>
                                 </form>
                             </div>
-                            <!-- Display answers -->
                             @if($question->answers->count() > 0)
                                 <div class="card-footer">
                                     <h5 class="fw-bolder mb-3">Answers:</h5>
@@ -83,21 +82,21 @@
                                                     {{ $answer->user->username }} answered on {{ date('Y-m-d', strtotime($answer->created_at)) }}
                                                 </div>
                                                 @if(auth()->user() && $answer->user_id == auth()->user()->id)
-                                                    <div class="dropdown">
-                                                        <button class="btn btn-secondary dropdown-toggle float-right" type="button" id="dropdownMenuButton{{$answer->id}}" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <div class="dropdown float-end">
+                                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton{{$answer->id}}" data-bs-toggle="dropdown" aria-expanded="false">
                                                             ...
                                                         </button>
-                                                        <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton{{$answer->id}}">
+                                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton{{$answer->id}}">
                                                             <li>
                                                                 <form method="POST" action="{{ route('answers.edit', ['id' => $answer->id]) }}" enctype="multipart/form-data">
                                                                     @csrf
                                                                     @method('PUT')
                                                                     <div class="form-floating mb-3">
                                                                         <textarea class="form-control" id="answerDetails" name="answers" placeholder="Edit your answer" style="height: 150px;" required>{{ $answer->answers }}</textarea>
-                                                                        <label for="answerDetails"><small class="form-text text-muted">Edit your answer here.</small></label>
+                                                                        <label for="answerDetails">Edit your answer</label>
                                                                     </div>
                                                                     <div class="d-grid">
-                                                                        <input type="submit" class="btn btn-outline-primary btn-sm" value="Update">
+                                                                        <button type="submit" class="btn btn-outline-primary btn-sm">Update</button>
                                                                     </div>
                                                                 </form>
                                                             </li>
@@ -117,7 +116,6 @@
                                     @endforeach
                                 </div>
                             @endif
-                            <!-- Answer form -->
                             @auth
                                 <div class="card-footer">
                                     <h5 class="fw-bolder mb-3">Submit your answer:</h5>

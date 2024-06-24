@@ -37,7 +37,7 @@ class QuestionController extends Controller
         $question->save();
         
         // Redirect ke halaman utama
-        return redirect('/home');
+        return redirect('home');
     }
 
     public function deleteQuestion($id): RedirectResponse
