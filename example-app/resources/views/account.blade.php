@@ -25,9 +25,8 @@
                     <div class="card border-0 shadow rounded-3 my-5">
                         <div class="card-body p-4 p-sm-5">
                             <div class="text-center">
-                                <img src="https://i.pinimg.com/736x/1f/eb/fd/1febfde8d61ac1e646adafa6f528d947.jpg" alt="Profile Picture" class="rounded-circle mb-3 profile-image" width="150" height="150">
-                                <p class="text-muted">@Tatsumi</p>
-                                <p class="text-muted">tatsumi@gmail.com</p>
+                                <h3 class="text-muted"> {{ auth()->user()->username }} </>
+                                <h3 class="text-muted"> {{ auth()->user()->email }} </>
                             </div>
                             <div class="text-center mb-3">
                                 <a href="/account/edit" class="btn btn-primary edit-profile-btn">Edit Profile</a>
