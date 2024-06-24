@@ -41,6 +41,7 @@
                             <a class="dropdown-item" href="/account">Account</a>
                             <a class="dropdown-item" href="/changePassword">Change Password</a>
                             <a class="dropdown-item" href="/logout">Log Out</a>
+                            <a class="dropdown-item" href="/">Delete Account</a>
                         </div>
                     </li>
                     <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
