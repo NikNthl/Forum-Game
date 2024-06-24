@@ -35,16 +35,5 @@ class question extends Model
     {
         return $this->hasMany(Answer::class);
     }
-    
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($question) {
-            if (auth()->check()) {
-                $question->user_id = auth()->id();
-            }
-        });
-    }
 
 };

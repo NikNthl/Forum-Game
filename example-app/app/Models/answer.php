@@ -23,14 +23,4 @@ class Answer extends Model
         return $this->belongsTo(User::class);
     }
 //
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($answer) {
-            if (auth()->check()) {
-                $answer->user_id = auth()->id();
-            }
-        });
-    }
 };

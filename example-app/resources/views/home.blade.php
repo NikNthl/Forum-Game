@@ -57,6 +57,11 @@
                             </div>
                             <div class="card-body">
                                 <p class="card-text">{{ $question->question }}</p>
+                                @if($question->image)
+                                    <div class="mb-3 text-center">
+                                        <img src="{{ asset('storage/' . $question->image) }}" alt="{{ $question->title }}" class="img-fluid rounded" style="max-width: 100%; height: auto;">
+                                    </div>
+                                @endif
                                 <div class="text-muted mb-1">Tags: {{ $question->tags }}</div>
                                 <form method="POST" action="{{ route('questions.like', $question->id) }}" class="d-inline">
                                     @csrf

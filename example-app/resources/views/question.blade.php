@@ -25,7 +25,7 @@
         <div class="card border-0 shadow rounded-3 my-5">
           <div class="card-body p-4 p-sm-5">
             <h5 class="card-title text-center mb-5 fw-light fs-5">Add Question</h5>
-            <form method="POST" action="/question">
+            <form method="POST" action="/question" enctype="multipart/form-data">
             {{ csrf_field() }}
                 <div class="form-floating mb-3">
                 <input type="text" class="form-control" id="questionTitle" name="title" placeholder="Title" required>
