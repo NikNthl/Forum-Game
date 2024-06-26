@@ -73,4 +73,22 @@ class QuestionController extends Controller
     
         return redirect()->route('home')->with('success', 'Question edited');
     }
+
+    public function deleteQuestion($id): RedirectResponse
+    {
+        $question = Question::findOrFail($id);
+        
+        if ($question->user_id != auth()->id()) {
+            return redirect()->route('home')->with('error', 'You cannot delete other users\' questions');
+        }
+
+        // Optionally delete the image if it exists
+        if ($question->image) {
+            Storage::disk('public')->delete($question->image);
+        }
+
+        $question->delete();
+
+        return redirect()->route('home')->with('success', 'Question deleted');
+    }
 }
