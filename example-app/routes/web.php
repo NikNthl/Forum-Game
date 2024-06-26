@@ -8,6 +8,7 @@ use App\Http\Controllers\searchController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route untuk halaman home
@@ -74,3 +75,11 @@ Route::post('/questions/{id}/dislike', [LikeController::class, 'dislike'])->name
 Route::post('/answers', [AnswerController::class, 'store'])->name('answers.store');
 Route::put('/answers/{id}', [AnswerController::class, 'editAnswer'])->name('answers.edit');
 Route::delete('/answers/{id}', [AnswerController::class, 'deleteAnswer'])->name('answers.delete');
+
+//Route untuk update users
+Route::get('users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');
+Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
+
+//route delete account
+Route::delete('/users/{id}', [UserController::class, 'deleteAccount'])->name('users.delete');
