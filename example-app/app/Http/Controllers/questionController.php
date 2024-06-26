@@ -23,7 +23,7 @@ class QuestionController extends Controller
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public', $filename, 'public'); 
+            $image->storeAs('public', $filename); 
             $validatedData['image'] = $filename;
         } else {
             $validatedData['image'] = null;
@@ -39,54 +39,38 @@ class QuestionController extends Controller
         // Redirect ke halaman utama
         return redirect('home');
     }
-
-    public function deleteQuestion($id): RedirectResponse
-    {
-        $question = Question::findOrFail($id);
-
-        if ($question->user_id != auth()->id()) {
-            return redirect()->route('home')->with('error', 'You cannot delete other users\' questions');
-        }
-
-        // Optionally delete the image file if it exists
-        if ($question->image) {
-            Storage::disk('public')->delete($question->image);
-        }
-
-        $question->delete();
-
-        return redirect()->route('home')->with('success', 'Question deleted');
-    }
-
+    
     public function editQuestion(Request $request, $id): RedirectResponse
     {
         $validatedData = $request->validate([
             'title' => 'required|string|max:200',
             'question' => 'required|string|max:2000',
-            'image' => 'image|mimes:jpeg,png,gif,svg|max:2048',
-            'tags' => 'nullable|string',
+            'image' => 'nullable|image|mimes:jpeg,png,gif,svg|max:2048',
+            'tags' => 'nullable|string|max:255',
         ]);
-
+    
         $question = Question::findOrFail($id);
-
+    
         if ($question->user_id != auth()->id()) {
             return redirect()->route('home')->with('error', 'You cannot edit other users\' questions');
         }
-
+    
         // Handle image upload if provided
         if ($request->hasFile('image')) {
             // Optionally delete the old image if it exists
             if ($question->image) {
                 Storage::disk('public')->delete($question->image);
             }
-            $validatedData['image'] = $request->file('image')->store('images', 'public');
+            $image = $request->file('image');
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public', $filename); 
+            $validatedData['image'] = $filename;
         } else {
             $validatedData['image'] = $question->image;
         }
-
+    
         $question->update($validatedData);
-
+    
         return redirect()->route('home')->with('success', 'Question edited');
     }
 }
-
