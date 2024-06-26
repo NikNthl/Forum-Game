@@ -110,7 +110,7 @@
                                         <h5 class="modal-title" id="editQuestionModalLabel{{$question->id}}">Edit Question</h5>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <form method="POST" action="{{ route('questions.update', $question->id) }}" enctype="multipart/form-data">
+                                    <form method="POST" action="{{ route('questions.edit', $question->id) }}" enctype="multipart/form-data">
                                         @csrf
                                         @method('PUT')
                                         <div class="modal-body">
