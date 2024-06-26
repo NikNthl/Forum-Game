@@ -82,4 +82,4 @@ Route::put('users/{id}', [UserController::class, 'update'])->name('users.update'
 Route::get('users/{id}', [UserController::class, 'show'])->name('users.show');
 
 //route delete account
-Route::delete('/account/delete/{id}', [UserController::class, 'delete']);
+Route::delete('/users/{id}', [UserController::class, 'deleteAccount'])->name('users.delete');

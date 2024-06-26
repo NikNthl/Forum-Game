@@ -54,20 +54,23 @@ class UserController extends Controller
         return view('/account', compact('user'));
     }
 
-
-    public function delete($id)
+    public function deleteAccount($id)
     {
-        // Cek apakah user yang sedang login adalah user yang ingin dihapus
-        if ($id == Auth::id()) {
-            // Hapus user dari database
-            User::find($id)->delete();
+       // Pastikan pengguna terotentikasi dan memiliki akses untuk menghapus akun
+        if (!auth()->check() || auth()->id() != $id) {
+            return redirect('/')->with('error', 'Anda tidak memiliki izin untuk menghapus akun ini.');
+        }
 
-            // Logout user
+        try {
+            $user = User::findOrFail($id);
+            $user->delete();
+        
+            // Logout pengguna setelah berhasil menghapus akun
             Auth::logout();
 
-            // Redirect ke halaman home atau halaman login
-            return redirect()->route('home')->with('success', 'Akun berhasil dihapus.');
+            return redirect('/')->with('success', 'Akun berhasil dihapus.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus akun. Silakan coba lagi.');
         }
     }
-
-}
+ }

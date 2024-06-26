@@ -41,7 +41,13 @@
                             <a class="dropdown-item" href="/account">Account</a>
                             <a class="dropdown-item" href="/changePassword">Change Password</a>
                             <a class="dropdown-item" href="/logout">Log Out</a>
-                            <a class="dropdown-item" href="/">Delete Account</a>
+                            <a class="dropdown-item" href="{{ route('users.delete', ['id' => auth()->id()]) }}" 
+                             onclick="event.preventDefault();
+                                        if (confirm('Apakah Anda yakin untuk menghapus akun?')) {
+                                            document.getElementById('delete-form').submit();
+                                        }">
+                                Delete Account
+                            </a>
                         </div>
                     </li>
                     <li class="nav-item {{ request()->routeIs('home') ? 'active' : '' }}">
@@ -51,6 +57,12 @@
             </div>
         </div>
     </nav>
+
+    <!-- Form untuk penghapusan akun -->
+    <form id="delete-form" action="{{ route('users.delete', ['id' => auth()->id()]) }}" method="POST" style="display: none;">
+        @csrf
+        @method('DELETE')
+    </form>
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
